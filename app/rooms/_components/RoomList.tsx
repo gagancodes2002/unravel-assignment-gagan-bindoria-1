@@ -1,20 +1,17 @@
 "use client"
 
-import { Users } from "lucide-react";
-import { ChangeEvent, useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import TopInput from "./TopInput";
-import { InView, useInView } from "react-intersection-observer";
+import { useInView } from "react-intersection-observer";
 import { useInfiniteRooms } from "../hooks/useInfinityRooms";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Skeleton from "./Skeleton/Skeleton";
 import RoomCard from "./RoomCard";
 import LazyComponentWrapper from "@/shared/ui/lazy-loading/LazyComponentWrapper";
-import { InfiniteQueryObserverPendingResult } from "@tanstack/react-query";
 import { Room } from "../schema/rooms.types";
 
 export default function (props: any) {
 
-    const queryParam = useSearchParams();
     const router = useRouter();
     const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } = useInfiniteRooms();
 

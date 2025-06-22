@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { ControlledTextInput } from '@/shared/ui/Input/textinput'
+import { ControlledTextInput } from '@/shared/ui/input/textinput'
 import { LocateIcon, LocationEdit, MapPin, Users } from "lucide-react";
-import { ControlledDateRangeSelector } from "@/shared/ui/Input/dateinput";
+import { ControlledDateRangeSelector } from "@/shared/ui/input/dateinput";
 
 interface TopInputForm {
     location: string
@@ -17,7 +17,7 @@ export default function () {
 
     // Won't be applying validations for now, if had to I would have used zod schema validations
 
-    const { watch, control, setValue, handleSubmit, } = useForm<TopInputForm>();
+    const { control, } = useForm<TopInputForm>();
 
 
     return (

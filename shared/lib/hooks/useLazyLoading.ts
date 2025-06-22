@@ -8,7 +8,7 @@ interface useLazyLoadingProps {
 const useLazyLoading = ({ threshold, rootMargin }: { threshold: number, rootMargin: string }) => {
 
     const [isIntersected, setIntersected] = useState(false);
-    const observingElemRef = useRef<HTMLElement>(null);
+    const observingElemRef = useRef<HTMLDivElement>(null);
 
 
     useEffect(() => {

@@ -17,7 +17,7 @@ export default function ImageGalleryModal({
     currentIndex,
     isViewAll = false,
     anchorEl // You'll need to pass the trigger element
-}: ImageGalleryPopoverProps & { anchorEl: HTMLElement | null }) {
+}: ImageGalleryPopoverProps & { anchorEl: HTMLDivElement | null }) {
     const { refs, floatingStyles } = useFloating({
         elements: {
             reference: anchorEl,

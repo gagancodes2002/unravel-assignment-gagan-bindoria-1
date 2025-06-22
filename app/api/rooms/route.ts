@@ -4,7 +4,7 @@ import type { RoomData } from "@/app/rooms/schema/rooms.types";
 
 // Asserting Type
 
-const rooms = roomData as RoomData
+const rooms = roomData as unknown as RoomData
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
