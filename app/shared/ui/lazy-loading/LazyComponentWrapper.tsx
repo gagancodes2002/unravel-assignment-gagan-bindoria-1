@@ -1,5 +1,5 @@
 import Skeleton from "@/app/rooms/_components/Skeleton/Skeleton"
-import useLazyLoading from "@/shared/lib/hooks/useLazyLoading"
+import useLazyLoading from "@/app/shared/lib/hooks/useLazyLoading"
 import { ReactNode } from "react"
 
 interface LazyComponentWrapperProps {

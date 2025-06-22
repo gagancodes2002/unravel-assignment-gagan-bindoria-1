@@ -1,4 +1,4 @@
-import OptimizedImage from "@/shared/ui/media/OptimizedImage";
+import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
 import mapImage from '@/public/images/rooms/map.png'
 
 export default function ExploreOnMap() {

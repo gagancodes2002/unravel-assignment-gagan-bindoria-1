@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { ControlledTextInput } from '@/shared/ui/input/textinput'
+import { ControlledTextInput } from '@/app/shared/ui/input/textinput'
 import { LocateIcon, LocationEdit, MapPin, Users } from "lucide-react";
-import { ControlledDateRangeSelector } from "@/shared/ui/input/dateinput";
+import { ControlledDateRangeSelector } from "@/app/shared/ui/input/dateinput";
 
 interface TopInputForm {
     location: string

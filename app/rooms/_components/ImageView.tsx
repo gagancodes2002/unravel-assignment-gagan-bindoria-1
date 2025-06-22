@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from "react";
 import ImageGalleryPopover from "./ImageGalleryPopover";
 import ImageThumbnails from "./ImageThumbnails";
-import OptimizedImage from "@/shared/ui/media/OptimizedImage";
+import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
 
 
 interface ImageViewProps {

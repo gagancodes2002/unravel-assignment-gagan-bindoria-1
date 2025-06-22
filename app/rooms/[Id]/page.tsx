@@ -18,7 +18,7 @@ import React from 'react'
 import { Variant } from '../schema/rooms.types'
 import clsx from 'clsx'
 import RoomView from '../_components/RoomView'
-import { PageErrorBoundary } from '@/shared/ui/error/PageErrorBoundary'
+import { PageErrorBoundary } from '@/app/shared/ui/error/PageErrorBoundary'
 
 
 

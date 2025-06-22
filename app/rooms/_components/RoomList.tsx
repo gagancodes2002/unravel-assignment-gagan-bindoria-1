@@ -7,7 +7,7 @@ import { useInfiniteRooms } from "../hooks/useInfinityRooms";
 import { useRouter } from "next/navigation";
 import Skeleton from "./Skeleton/Skeleton";
 import RoomCard from "./RoomCard";
-import LazyComponentWrapper from "@/shared/ui/lazy-loading/LazyComponentWrapper";
+import LazyComponentWrapper from "@/app/shared/ui/lazy-loading/LazyComponentWrapper";
 import { Room } from "../schema/rooms.types";
 
 export default function (props: any) {

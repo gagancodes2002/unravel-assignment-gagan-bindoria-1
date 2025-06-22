@@ -1,5 +1,5 @@
 import { Room } from "@/app/rooms/schema/rooms.types"
-import { fetcher } from "@/shared/lib/utils/fetcher"
+import { fetcher } from "@/app/shared/lib/utils/fetcher"
 
 export const roomService = {
     fetchRooms: async (page: number): Promise<Room[]> => {

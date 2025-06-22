@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { Pause, PlayIcon, VolumeOff, Volume } from "lucide-react";
-import OptimizedVideo from "@/shared/ui/media/OptimizedVideo";
+import OptimizedVideo from "@/app/shared/ui/media/OptimizedVideo";
 
 interface VideoViewProps {
     media: string;

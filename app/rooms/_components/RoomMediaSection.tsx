@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useRef, useCallback, useEffect } from 'react'
-import OptimizedImage from '@/shared/ui/media/OptimizedImage'
-import OptimizedVideo from '@/shared/ui/media/OptimizedVideo'
+import OptimizedImage from '@/app/shared/ui/media/OptimizedImage'
+import OptimizedVideo from '@/app/shared/ui/media/OptimizedVideo'
 import React from 'react'
 import { Room } from '../schema/rooms.types'
 import { Pause, Play, Volume, VolumeOff } from 'lucide-react'

@@ -1,8 +1,8 @@
 'use client'
 
 
-import OptimizedImage from "@/shared/ui/media/OptimizedImage";
-import OptimizedVideo from "@/shared/ui/media/OptimizedVideo";
+import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
+import OptimizedVideo from "@/app/shared/ui/media/OptimizedVideo";
 import { useEffect, useRef, useState } from "react"
 import { DisplayProperty, Variant } from "../schema/rooms.types";
 import { Bed, Bubbles, CheckCircle, Dumbbell, ForkKnife, Hotel, LocateIcon, LucideEdit, ParkingSquare, ReceiptText, SquarePercent, User, WavesLadder, Wifi } from "lucide-react";

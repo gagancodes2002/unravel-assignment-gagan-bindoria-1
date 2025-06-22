@@ -1,4 +1,4 @@
-import OptimizedImage from "@/shared/ui/media/OptimizedImage";
+import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
 import React from "react";
 
 interface ImageThumbnailsProps {

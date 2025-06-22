@@ -1,4 +1,4 @@
-import OptimizedImage from "@/shared/ui/media/OptimizedImage";
+import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
 import { autoUpdate, flip, offset, shift, useFloating } from "@floating-ui/react";
 
 interface ImageGalleryPopoverProps {
