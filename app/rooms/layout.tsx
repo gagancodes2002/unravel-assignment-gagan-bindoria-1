@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-export default function RoomsLayout({ children }: { children: ReactNode }) {
+export default function ({ children }: { children: ReactNode }) {
 
     return (
         <div

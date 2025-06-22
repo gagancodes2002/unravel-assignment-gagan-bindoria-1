@@ -3,7 +3,7 @@ import { roomService } from "../services/roomService"
 
 export const useInfiniteRooms = () => {
     return useInfiniteQuery({
-        queryKey: ['room'],
+        queryKey: ['rooms'],
         queryFn: ({ pageParam = 0 }) => roomService.fetchRooms(pageParam as number),
         initialPageParam: 0,
         getNextPageParam: (lastPage, allPages) => {

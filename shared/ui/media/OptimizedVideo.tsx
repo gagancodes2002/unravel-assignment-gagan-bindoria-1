@@ -1,3 +1,5 @@
+'use client'
+
 import React, { forwardRef, useRef, useImperativeHandle, MediaHTMLAttributes, useState, useEffect } from 'react';
 
 type Props = {

@@ -9,13 +9,14 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Skeleton from "./Skeleton/Skeleton";
 import RoomCard from "./RoomCard";
 import LazyComponentWrapper from "@/shared/ui/lazy-loading/LazyComponentWrapper";
+import { InfiniteQueryObserverPendingResult } from "@tanstack/react-query";
+import { Room } from "../schema/rooms.types";
 
-export default function () {
-
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } = useInfiniteRooms();
+export default function (props: any) {
 
     const queryParam = useSearchParams();
     const router = useRouter();
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } = useInfiniteRooms();
 
 
 
@@ -53,15 +54,15 @@ export default function () {
 
     return (
         <div
-            className="text-neutral-600"
+            className="text-neutral-600 flex flex-col justify-center items-center space-y-12"
         >
 
             <TopInput />
 
             {/* Rooms Grid */}
-            <div className="md:col-span-3">
+            <div className="md:col-span-3 ">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
-                    {loadedRooms.map((room, roomIndex) => (
+                    {loadedRooms.map((room: Room, roomIndex: number) => (
                         <div
                             key={roomIndex}
                             onClick={(e) => {

@@ -10,8 +10,15 @@ export async function GET(
     request: NextRequest,
     { params }: { params: { id: string } }
 ) {
+
+
     try {
-        const roomId = params.id;
+
+
+
+        console.log("Room Database : ")
+
+        const { id: roomId } = await params;
 
         // Validate room ID
         if (!roomId) {
