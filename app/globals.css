@@ -1,26 +1,159 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Brand Colors */
+  --color-brand-50: #fff1f2;
+  --color-brand-100: #ffe4e6;
+  --color-brand-200: #fecdd3;
+  --color-brand-300: #fda4af;
+  --color-brand-400: #fb7185;
+  --color-brand-500: #f43f5e;
+  --color-brand-600: #e11d48;
+  --color-brand-700: #be123c;
+  --color-brand-800: #9f1239;
+  --color-brand-900: #881337;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Neutral Colors */
+  --color-neutral-0: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  /* Error Colors */
+  --color-error-50: #fef2f2;
+  --color-error-100: #fee2e2;
+  --color-error-200: #fecaca;
+  --color-error-300: #fca5a5;
+  --color-error-400: #f87171;
+  --color-error-500: #ef4444;
+  --color-error-600: #dc2626;
+  --color-error-700: #b91c1c;
+  --color-error-800: #991b1b;
+  --color-error-900: #7f1d1d;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Warning Colors */
+  --color-warning-50: #fefce8;
+  --color-warning-100: #fef9c3;
+  --color-warning-200: #fef08a;
+  --color-warning-300: #fde047;
+  --color-warning-400: #facc15;
+  --color-warning-500: #eab308;
+  --color-warning-600: #ca8a04;
+  --color-warning-700: #a16207;
+  --color-warning-800: #854d0e;
+  --color-warning-900: #713f12;
+
+  /* Success Colors */
+  --color-success-50: #f0fdf4;
+  --color-success-100: #dcfce7;
+  --color-success-200: #bbf7d0;
+  --color-success-300: #86efac;
+  --color-success-400: #4ade80;
+  --color-success-500: #22c55e;
+  --color-success-600: #16a34a;
+  --color-success-700: #15803d;
+  --color-success-800: #166534;
+  --color-success-900: #14532d;
+
+  /* Semantic Colors */
+  --color-brand-primary: #e11d48;
+  --color-default-font: #171717;
+  --color-subtext-color: #737373;
+  --color-neutral-border: #e5e5e5;
+  --color-white: #ffffff;
+  --color-default-background: #ffffff;
+
+  /* Typography */
+  --font-family-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-family-mono: ui-monospace, "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace;
+
+  /* Font Sizes with Line Heights */
+  --font-size-caption: 0.75rem;
+  /* 12px */
+  --font-size-caption--line-height: 1rem;
+  /* 16px */
+  --font-size-caption--font-weight: 400;
+
+  --font-size-caption-bold: 0.75rem;
+  /* 12px */
+  --font-size-caption-bold--line-height: 1rem;
+  /* 16px */
+  --font-size-caption-bold--font-weight: 500;
+
+  --font-size-body: 0.875rem;
+  /* 14px */
+  --font-size-body--line-height: 1.25rem;
+  /* 20px */
+  --font-size-body--font-weight: 400;
+
+  --font-size-body-bold: 0.875rem;
+  /* 14px */
+  --font-size-body-bold--line-height: 1.25rem;
+  /* 20px */
+  --font-size-body-bold--font-weight: 500;
+
+  --font-size-heading-3: 1rem;
+  /* 16px */
+  --font-size-heading-3--line-height: 1.25rem;
+  /* 20px */
+  --font-size-heading-3--font-weight: 500;
+
+  --font-size-heading-2: 1.25rem;
+  /* 20px */
+  --font-size-heading-2--line-height: 1.5rem;
+  /* 24px */
+  --font-size-heading-2--font-weight: 500;
+
+  --font-size-heading-1: 1.875rem;
+  /* 30px */
+  --font-size-heading-1--line-height: 2.25rem;
+  /* 36px */
+  --font-size-heading-1--font-weight: 500;
+
+  --font-size-monospace-body: 0.875rem;
+  /* 14px */
+  --font-size-monospace-body--line-height: 1.25rem;
+  /* 20px */
+  --font-size-monospace-body--font-weight: 400;
+
+  /* Box Shadows */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0px 4px 16px -2px rgba(0, 0, 0, 0.08), 0px 2px 4px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+  --shadow-overlay: 0px 12px 32px -4px rgba(0, 0, 0, 0.08), 0px 4px 8px -2px rgba(0, 0, 0, 0.08);
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  /* 4px */
+  --radius: 0.5rem;
+  /* 8px */
+  --radius-md: 0.5rem;
+  /* 8px */
+  --radius-lg: 0.75rem;
+  /* 12px */
+  --radius-full: 9999px;
+
+  /* Spacing Extensions */
+  --spacing-112: 28rem;
+  --spacing-144: 36rem;
+  --spacing-192: 48rem;
+  --spacing-256: 64rem;
+  --spacing-320: 80rem;
+
+  /* Breakpoints */
+  --breakpoint-mobile: 767px;
+
+  /* Animation Timing */
+  --animate-fade-in: fade-in 0.5s ease-in-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-pulse-soft: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

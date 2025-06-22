@@ -1,0 +1,68 @@
+- .gitignore
+- api
+- app
+  - api
+    - rooms
+      - route.ts
+      - [id]
+        - route.ts
+  - favicon.ico
+  - globals.css
+  - layout.tsx
+  - page.tsx
+  - providers.tsx
+  - rooms
+    - hooks
+    - layout.tsx
+    - page.tsx
+    - schema
+      - rooms.types.ts
+    - _api
+    - _components
+      - ExploreOnMap.tsx
+      - FilterContent.tsx
+      - ImageGalleryPopover.tsx
+      - ImageThumbnails.tsx
+      - ImageView.tsx
+      - RoomCard.tsx
+      - RoomList.tsx
+      - Skeleton
+        - Skeleton.tsx
+      - TopInput.tsx
+      - VideoVIew.tsx
+- components
+  - ui
+    - button.tsx
+    - card.tsx
+    - Input
+      - dateinput.tsx
+      - textinput.tsx
+    - Media
+      - OptimizedImage.tsx
+      - OptimizedVideo.tsx
+- data
+  - roomData.json
+- hooks
+  - useInfinityRooms.ts
+  - useLazyLoading.ts
+- lib
+  - fetcher.ts
+- next-env.d.ts
+- next.config.ts
+- package-lock.json
+- package.json
+- postcss.config.mjs
+- public
+  - file.svg
+  - globe.svg
+  - images
+    - rooms
+      - map.png
+  - next.svg
+  - vercel.svg
+  - window.svg
+- README.md
+- services
+  - roomService.ts
+- tailwind.config.ts
+- tsconfig.json
