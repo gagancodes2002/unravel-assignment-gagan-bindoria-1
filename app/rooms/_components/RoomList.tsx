@@ -148,21 +148,13 @@ export default function (props: any) {
             <div className="md:col-span-3 w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
                     {loadedRooms.map((room: Room, roomIndex: number) => (
-                        <div
+                        <LazyComponentWrapper
                             key={roomIndex}
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                // handleRoomSelection(roomIndex);
-                            }}
-                            className="cursor-pointer"
+                            threshold={0.1}
+                            className=""
                         >
-                            <LazyComponentWrapper
-                                key={roomIndex}
-                                threshold={0.1}
-                            >
-                                <RoomCard roomIndex={roomIndex} room={room} />
-                            </LazyComponentWrapper>
-                        </div>
+                            <RoomCard roomIndex={roomIndex} room={room} />
+                        </LazyComponentWrapper>
                     ))}
                 </div>
 

@@ -52,9 +52,10 @@ export const PageErrorFallback = ({ pageName, onRetry }: PageErrorFallbackProps)
                     onClick={() => {
                         window.history.back()
                     }}
+                    className="space-x-2"
                     size={"default"}
                 >
-                    <ArrowLeft /> Go Back
+                    <ArrowLeft size={20} />  <span>Go Back</span>
                 </Button>
 
 
@@ -62,8 +63,12 @@ export const PageErrorFallback = ({ pageName, onRetry }: PageErrorFallbackProps)
                     onClick={() => {
                         window.location.href = '/'
                     }}
+                    className="space-x-2"
                 >
-                    <HomeIcon /> Home
+                    <HomeIcon size={20} />
+                    <span>
+                        Home
+                    </span>
                 </Button>
 
             </div>

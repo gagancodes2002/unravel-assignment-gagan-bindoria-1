@@ -6,6 +6,7 @@ import OptimizedVideo from '@/app/shared/ui/media/OptimizedVideo'
 import React from 'react'
 import { Room } from '../schema/rooms.types'
 import { Pause, Play, Volume, VolumeOff } from 'lucide-react'
+import clsx from 'clsx'
 
 // Video component for single room page
 
@@ -96,12 +97,12 @@ function RoomImageView({
     const remainingCount = media.length - 4;
 
     return (
-        <div className="h-full w-full flex flex-col gap-1">
+        <div className="md:h-full w-full flex flex-col gap-1 h-[38vh]">
             {/* Main large image */}
             <div
                 className={`
-                    flex-[1_1_65%] relative rounded-lg overflow-hidden bg-gray-300 
-                    transition-transform duration-200
+                    flex-[1_0_70%] relative rounded-lg overflow-hidden bg-gray-300 
+                    transition-transform duration-200 
                     ${onImageClick ? 'cursor-pointer hover:scale-[1.01]' : 'cursor-default'}
                 `}
                 onClick={(e) => {
@@ -123,7 +124,7 @@ function RoomImageView({
 
             {/* Bottom row - 4 thumbnail images */}
             {mediaList.length > 1 && (
-                <div className="flex-[1_1_35%] grid grid-cols-4 gap-1 min-h-0 items-stretch">
+                <div className="flex-[1_1_auto] grid grid-cols-4 gap-1 min-h-0">
                     {Array.from({ length: 4 }).map((_, index) => {
                         const imageIndex = index + 1;
                         const imageUrl = mediaList[imageIndex];
@@ -224,14 +225,17 @@ export default function RoomMediaSection({
 
     return (
         <div
-            className={`
-                w-full bg-white rounded-lg overflow-hidden shadow-lg
+            className={clsx(
+                `w-full bg-white rounded-lg overflow-hidden shadow-lg
                 transition-all duration-300 ease-in-out
                 hover:scale-[1.01] hover:shadow-xl
-                h-[60vh] sm:h-[70vh] md:h-[60vh] lg:h-[65vh]
+                h-fit sm:h-[70vh] md:h-[60vh] lg:h-[65vh]
                 max-h-[500px] sm:max-h-[600px] md:max-h-[700px] lg:max-h-[800px]
-                min-h-[400px] sm:min-h-[500px] md:min-h-[600px]
-            `}
+                sm:min-h-[500px] md:min-h-[600px]
+            `,
+                mediaType === "video" && "max-h-none"
+            )
+            }
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >

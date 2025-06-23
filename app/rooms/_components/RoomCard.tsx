@@ -108,8 +108,7 @@ export default function RoomMediaSection({
 
     return (
         <div
-            className={`
-             z-0 max-w-full grid justify-center items-center
+            className={` cursor-pointer z-0 max-w-full grid justify-center items-center
              grid-cols-1 md:grid-cols-[auto_1fr]
              grid-rows-[auto_auto] md:grid-rows-1
              h-auto md:h-[32vh] md:max-h-70 sm:min-h-[58vh] md:min-h-65
@@ -124,20 +123,21 @@ export default function RoomMediaSection({
         >
             {/* Media Container */}
             <div className={`
-                rounded-lg bg-white aspect-square relative
-                w-full md:w-auto h-auto md:h-full md:max-w-none
-                justify-center overflow-hidden p-2
+              relative rounded-lg bg-white aspect-square
+              w-full md:w-auto h-auto md:h-full md:max-w-none
+              justify-center p-2 !z-0
             `}>
-
                 {mediaType === "video" ? (
                     <VideoView
+                        key={`video-${roomIndex}`}
                         media={media[0]}
                         videoPlayerRef={videoPlayerRef}
                         isPlaying={isPlaying}
                         onPlayPause={handlePlayPause}
+                        className="!z-2"
                     />
                 ) : mediaType === "image" ? (
-                    <ImageView key={roomIndex} roomIndex={roomIndex} media={media} onImageClick={onImageClick} />
+                    <ImageView className="!z-2" key={`image-${roomIndex}`} roomIndex={roomIndex} media={media} onImageClick={onImageClick} />
                 ) : (
                     <div className="flex items-center justify-center h-full text-gray-600">
                         <p className="text-base">Unsupported media type</p>
@@ -221,6 +221,10 @@ export default function RoomMediaSection({
 
                     <Link
                         href={`/rooms/${roomIndex}`}
+                        onClick={(e) => {
+                            // Fixed : event was propagating to the whole card
+                            e.stopPropagation();
+                        }}
                         className="bg-brand-600 inline flex-nowrap text-nowrap text-white rounded-lg py-2.5 px-4 text-sm font-medium hover:bg-brand-700 transition-colors duration-200 shadow-sm hover:shadow-md"
                     >
                         Book Now

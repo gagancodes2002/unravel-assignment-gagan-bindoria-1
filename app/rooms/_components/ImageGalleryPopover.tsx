@@ -35,7 +35,7 @@ export default function ImageGalleryPopover({
                     ))}
                 </div>
             ) : (
-                <div className="w-[40vw] max-w-xl aspect-[20/18] relative">
+                <div className="w-[60vw] sm:w-[40vw] max-w-xl aspect-[20/18] relative">
                     {currentIndex !== null && mediaList[currentIndex] && (
                         <OptimizedImage
                             src={mediaList[currentIndex]}
