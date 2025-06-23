@@ -46,7 +46,7 @@ export default function ({ src,
     return (
         <div
             ref={containerRef}
-            className={` rounded bg-red-100 ${className}`}
+            className={` rounded bg-gray-100 h-full w-full ${className}`}
         >
             {!isInView ? (
                 <Skeleton

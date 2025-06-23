@@ -53,7 +53,7 @@ function RoomCardSkeletonComponent() {
 function RoomListSkeletonComponent() {
     return (
         <div
-            className="px-6 text-neutral-600 md:max-w-7xl mx-auto gap-2  flex flex-col justify-center items-center space-y-12"
+            className="px-6 text-neutral-600 md:max-w-7xl mx-auto  flex flex-col justify-center items-center space-y-12"
 
         >
             <div
