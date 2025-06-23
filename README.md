@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 I am using Feature Sliced Design architecture, in this architecture we are trying to have one flows between the entities
 - 1 shared - All shared libraries/api/database/comoponents/utils (Global Things)
 - 2 app - As I am using NextJS, so we are going to use the app folder to utilize NextJS's structured route functionality
-- 3 features - In our case, we have only one features which is 'rooms', in a real world application it can be products, sales, users etc.
+- 3 _components or (features) - In our case, we have only one features which is 'rooms', in a real world application it can be products, sales, users etc.
  
 Our usage flow would be like this : 
      
@@ -14,40 +14,23 @@ Our usage flow would be like this :
       |    |
       v    v
 
-{app}   -->  {features}
+{app}   -->  {features/_components}
+
+## Sever Side State Management
+- I have used TanStack react query as it provides hooks like useQuery, useMutation and most important in our use case useInfiniteQuery
+- I have created custom hooks to fetch Rooms (useInfiniteRooms, useGetRoomById) with a batch of 10, in pages
+- We use 'pageParam' to share the page number to the nextjs server route, to fetch the RoomID
+
+
+## Performance Optimizations : 
+- I have created a custom LazyLoadingWrapper which will only render the component when its intersected otherwise a fallback will be shown
+- LazyLoadingWrapper uses another customHook that I have built which uses IntersectionObserver API to export whether the said element is intersected or not
+- Just for the sake of it, I have used "lazy" loading of a "Variant" card so that the code is imported when its needed
+- For media I have created two comoponents OptimizedVideo and OptimizedImage both of them uses the same IntersectionObserver API so when they are intersected only then they will be loaded
+
+
 
 ## UI Theme 
 Used this "https://www.subframe.com/library/theme" to generate a UI theme styles to use with tailwind
 
 
-<!-- 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details. -->

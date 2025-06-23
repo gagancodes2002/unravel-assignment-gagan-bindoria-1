@@ -22,7 +22,7 @@ export default function () {
 
     return (
         <div
-            className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-0 "
+            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-0 "
         >
             <ControlledTextInput
                 className="!bg-neutral-0"

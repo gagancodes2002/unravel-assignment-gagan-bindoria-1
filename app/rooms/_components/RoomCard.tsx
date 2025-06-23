@@ -4,31 +4,27 @@ import VideoView from "./VideoVIew";
 import ImageView from "./ImageView";
 import React from "react";
 import Link from "next/link";
-import OptimizedVideo from "@/app/shared/ui/media/OptimizedVideo";
-
-
+import { Heart, Users, Bed, Wifi, Coffee, Car, Star } from "lucide-react";
 
 interface RoomMediaSectionProps {
     roomIndex: number;
     room: Room;
-    // media: string[];
-    // mediaType: 'video' | 'image' | null;
     onImageClick?: (index: number) => void;
 }
 
-export default function ({
+export default function RoomMediaSection({
     roomIndex,
     room,
     onImageClick
 }: RoomMediaSectionProps) {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
+    const [isFavorited, setIsFavorited] = useState<boolean>(false);
     const videoPlayerRef = useRef<HTMLVideoElement>(null);
 
     const mediaObj: {
         type: 'video' | 'image' | null
         media: any[]
     } = useMemo(() => {
-        // Order Video if present > Image if present > Nothing if both absent
         let payload: {
             type: 'video' | 'image' | null
             media: any[]
@@ -49,10 +45,7 @@ export default function ({
             })
         }
 
-
         return payload
-
-
     }, [room.properties])
 
     const media = useMemo(() => {
@@ -62,6 +55,19 @@ export default function ({
     const mediaType = useMemo(() => {
         return mediaObj.type
     }, [mediaObj])
+
+    // Mock data - replace with actual room properties
+    const roomDetails = {
+        guests: 2,
+        beds: 1,
+        bathrooms: 1,
+        size: "25 m²",
+        currency: room?.variants[0].total_price?.currency,
+        price: `${room?.variants[0].total_price?.discounted_price} ` || 2500,
+        rating: 4.8,
+        reviewCount: 127,
+        amenities: ['Wifi', 'AC', 'TV', 'Mini Bar'] // Mock amenities
+    };
 
     const handlePlayPause = useCallback(() => {
         if (videoPlayerRef.current) {
@@ -106,19 +112,28 @@ export default function ({
                 z-0 w-full max-w-full sm:max-w-[60vw] bg-white shadow-lg rounded-lg
                 grid grid-cols-1 md:grid-cols-[auto_1fr] grid-rows-[auto_auto] md:grid-rows-1
                 h-auto md:h-[32vh] max-h-none md:max-h-70 min-h-auto sm:min-h-[58vh] md:min-h-65
-                gap-0 md:gap-2 p-1 sm:p-1.5 md:p-2
+                gap-0 md:gap-3 p-1 sm:p-1.5 md:p-2
                 transition-all duration-300 ease-in-out
-                hover:scale-[1.02] hover:shadow-sm hover:border hover:border-gray-400
+                hover:scale-[1.01] hover:shadow-xl border border-gray-200 hover:border-gray-300
             `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {/* Media Container */}
             <div className={`
-                rounded bg-gray-200 aspect-square
+                rounded-lg bg-gray-200 aspect-square relative
                 w-full md:w-auto h-auto md:h-full max-w-[90vw] md:max-w-none
-                justify-center
+                justify-center overflow-hidden
             `}>
+
+
+                {/* Image Count Badge */}
+                {mediaType === "image" && media.length > 1 && (
+                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium">
+                        {media.length} photos
+                    </div>
+                )}
+
                 {mediaType === "video" ? (
                     <VideoView
                         media={media[0]}
@@ -137,39 +152,83 @@ export default function ({
 
             {/* Content Container */}
             <div className={`
-                grid grid-cols-6
-                p-1.5 sm:p-2 md:p-3.5  gap-2 
-                min-h-30 md:min-h-auto bg-transparent md:bg-white overflow-auto
+                flex flex-col justify-between
+                p-3 md:p-4 gap-3 
+                min-h-30 md:min-h-auto bg-transparent md:bg-white
             `}>
-                {/* Text Content */}
-                <div className="col-span-4 flex flex-col">
-                    <h2 className={`
-                        text-lg font-semibold mb-2
-                        overflow-hidden md:overflow-visible xs:line-clamp-2 sm:block `}>
+                {/* Header Section */}
+                <div className="flex-1">
+                    {/* Rating */}
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-1">
+                            <span className="text-sm "><Star className="fill-amber-400 stroke-amber-400" /></span>
+                            <span className="text-sm font-medium">{roomDetails.rating}</span>
+                            <span className="text-sm text-gray-500">({roomDetails.reviewCount})</span>
+                        </div>
+                        <span className="text-gray-300">•</span>
+                        {/* Just writing the room_type_code as its the only thing that looks like a id but its not unique throught so not using this as a key */}
+                        <span className="text-sm text-gray-600">{room.room_type_code}</span>
+                    </div>
+
+                    <h2 className="text-lg font-semibold mb-3 line-clamp-2">
                         {room.name}
                     </h2>
-                    <div className="max-h-[30%] overflow-y-auto">
-                        <p className="text-base text-gray-700">
-                            {"TEST"}
-                        </p>
+
+                    {/*  Details */}
+                    <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                        <div className="flex items-center gap-1">
+                            <Users size={14} />
+                            <span>{roomDetails.guests} guests</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                            <Bed size={14} />
+                            <span>{roomDetails.beds} bed</span>
+                        </div>
+                        <div className="flex items-center gap-1">
+                            <span className="text-xs">🛁</span>
+                            <span>{roomDetails.bathrooms} bath</span>
+                        </div>
+                    </div>
+
+                    {/* Facilities*/}
+                    <div className="flex flex-wrap gap-2 mb-3">
+                        {roomDetails.amenities.slice(0, 3).map((amenity, index) => (
+                            <span
+                                key={index}
+                                className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded-full"
+                            >
+                                {amenity}
+                            </span>
+                        ))}
+                        {roomDetails.amenities.length > 3 && (
+                            <span className="text-xs text-gray-500">
+                                +{roomDetails.amenities.length - 3} more
+                            </span>
+                        )}
                     </div>
                 </div>
 
-                <div
-                    className="col-span-2 flex h-full items-end justify-end"
-                >
+                {/* Price setion */}
+                <div className="flex items-end justify-between">
+                    <div className="flex flex-col">
+                        <div className="flex items-baseline gap-1">
+                            <span className="text-xl font-bold text-gray-900">
+                                <span
+                                    className="text-green-600"
+                                >
+                                    {roomDetails.currency}  {roomDetails.price.toLocaleString()}
+                                </span>
+                            </span>
+                            <span className="text-sm text-gray-500">/ night</span>
+                        </div>
+                        <span className="text-xs text-gray-500">Including taxes</span>
+                    </div>
 
-                    {/* Button Container */}
                     <Link
                         href={`/rooms/${roomIndex}`}
-                        className="bg-brand-600 flex h-fit text-neutral-0 rounded-md py-1.5 px-2 text-sm hover:bg-brand-700 ring-1 transition-colors duration-300"
-
+                        className="bg-brand-600 text-white rounded-lg py-2.5 px-4 text-sm font-medium hover:bg-brand-700 transition-colors duration-200 shadow-sm hover:shadow-md"
                     >
-                        <span
-                            className="tracking-tight leading-none"
-                        >
-                            View Details
-                        </span>
+                        Book Now
                     </Link>
                 </div>
             </div>

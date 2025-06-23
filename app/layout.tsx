@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montSerrat.variable} ${montSerrat.variable} antialiased`}
+        className={`${montSerrat.variable} ${montSerrat.variable} antialiased bg-neutral-100`}
       >
         <ErrorBoundary>
           <Providers>

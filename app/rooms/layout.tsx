@@ -4,7 +4,7 @@ export default function ({ children }: { children: ReactNode }) {
 
     return (
         <div
-            className="container py-6 mx-auto bg-neutral-100 min-h-screen"
+            className="container py-6 mx-auto  min-h-screen"
         >
             {children}
         </div>

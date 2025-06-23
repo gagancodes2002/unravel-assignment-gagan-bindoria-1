@@ -183,7 +183,7 @@ export default function ({ params }: { params: Promise<Params> }) {
     }
 
     return (
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-md mx-auto sm:max-w-4xl">
             {/* Header */}
             <div className="bg-white rounded-none sm:rounded-lg shadow-sm mb-2">
                 <div className="py-4 px-6">
@@ -218,7 +218,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                 {/* Room Details */}
                 <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6 mb-8">
                     <div className="mb-6">
-                        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+                        <h1 className="text-2xl sm:text-4xl font-medium text-gray-900 mb-6">
                             {room.name}
                         </h1>
 

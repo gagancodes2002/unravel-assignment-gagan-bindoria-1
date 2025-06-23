@@ -105,7 +105,7 @@ export default function VariantCard({
                         videoPlayerRef={videoPlayerRef}
                         muted={isMuted}
                         loop
-                        className="w-auto h-[150%] min-w-full object-cover -translate-y-1/4"
+                        className="w-auto h-[150%] min-w-full object-cover "
                         height="100%"
                         width="100%"
                     />
