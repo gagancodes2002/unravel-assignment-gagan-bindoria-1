@@ -10,6 +10,92 @@ import RoomCard from "./RoomCard";
 import LazyComponentWrapper from "@/app/shared/ui/lazy-loading/LazyComponentWrapper";
 import { Room } from "../schema/rooms.types";
 
+function RoomCardSkeletonComponent() {
+
+    return (
+
+        <Skeleton
+            className={`
+             z-0 max-w-full grid justify-center items-center
+             grid-cols-1 md:grid-cols-[auto_1fr]
+             grid-rows-[auto_auto] md:grid-rows-1
+             h-auto md:h-[32vh] md:max-h-70 sm:min-h-[58vh] md:min-h-65
+             gap-0 md:gap-3
+             p-1 sm:p-1.5 md:p-2
+             bg-white border border-gray-200 rounded-lg shadow-lg
+             transition-all duration-300 ease-in-out
+             hover:scale-[1.01]  hover:border-gray-300 gap-2
+        `}
+        >
+            {/* Media Container */}
+            <Skeleton className={`
+                rounded-lg  aspect-square relative
+                w-full md:w-auto h-auto md:h-full md:max-w-none
+                justify-center overflow-hidden p-2 md:
+            `
+            } />
+
+            <div
+                className="  flex flex-col gap-2 justify-between h-full md:space"
+            >
+                {/* Skeleton Lines */}
+                {Array.from({ length: 4 }).map((_, index) =>
+                    <Skeleton
+                        key={index}
+                        className={`h-6 md:min-h-auto `} />
+                )}
+            </div>
+
+        </Skeleton >
+    )
+}
+
+function RoomListSkeletonComponent() {
+    return (
+        <div
+            className="px-6 text-neutral-600 md:max-w-7xl mx-auto gap-2  flex flex-col justify-center items-center space-y-12"
+
+        >
+            <div
+                className="flex flex-row bg-white w-full gap-2 p-2 rounded-md"
+            >
+                {Array.from({ length: 3 }).map((_, index: number) => (
+
+                    <Skeleton
+                        key={index}
+                        className="w-full h-6 md:h-12"
+                    />
+                ))}
+
+            </div>
+
+
+
+            <div className="md:col-span-3 w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
+                    {Array.from({ length: 3 }).map((_, roomIndex: number) => (
+                        <div
+                            key={roomIndex}
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                // handleRoomSelection(roomIndex);
+                            }}
+                            className="cursor-pointer"
+                        >
+                            <RoomCardSkeletonComponent key={roomIndex} />
+
+                        </div>
+                    ))}
+                </div>
+
+            </div>
+
+
+        </div>
+    )
+}
+
+
 export default function (props: any) {
 
     const router = useRouter();
@@ -42,9 +128,7 @@ export default function (props: any) {
 
 
     if (isLoading) {
-        <Skeleton
-            className={`30vh w-full`}
-        />
+        return <RoomListSkeletonComponent />
     }
 
 
@@ -97,17 +181,6 @@ export default function (props: any) {
                     )}
                 </div>
             </div>
-
-
-
-            {/* <Card>
-                <CardHeader>
-                    <CardTitle>View By Day</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    Checking
-                </CardContent>
-            </Card> */}
 
         </div >
     )
