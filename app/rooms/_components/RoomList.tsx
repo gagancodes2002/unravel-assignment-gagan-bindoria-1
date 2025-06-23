@@ -9,6 +9,7 @@ import Skeleton from "./Skeleton/Skeleton";
 import RoomCard from "./RoomCard";
 import LazyComponentWrapper from "@/app/shared/ui/lazy-loading/LazyComponentWrapper";
 import { Room } from "../schema/rooms.types";
+import useThrottling from "@/app/shared/lib/hooks/useThrottling";
 
 function RoomCardSkeletonComponent() {
 
@@ -96,19 +97,35 @@ function RoomListSkeletonComponent() {
 }
 
 
-export default function (props: any) {
+export default function () {
 
     const router = useRouter();
-    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, isError, error } = useInfiniteRooms();
 
+    // this hook will not follow default behaviour for useQuery, I have added refetchOnWindow focus to false
+    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } = useInfiniteRooms();
+
+    // Memoize the fetch function to prevent unnecessary re-creations
+    const handleFetchNextPage = useCallback(() => {
+        if (hasNextPage && !isFetchingNextPage) {
+            fetchNextPage();
+        }
+    }, [fetchNextPage, hasNextPage, isFetchingNextPage]);
+
+    const throttledPageFetcher = useThrottling({
+        callback: handleFetchNextPage,
+        delay: 500
+    })
 
 
     const { ref } = useInView({
         threshold: 0.1,
         onChange: (InView) => {
-            if (InView && hasNextPage && !isFetchingNextPage) {
-                fetchNextPage();
+
+            if (InView) {
+                // Based on the delay the below function would be throttled
+                throttledPageFetcher();
             }
+
         }
     })
 
@@ -119,12 +136,6 @@ export default function (props: any) {
 
 
     }, [data?.pages])
-
-    const handleRoomNavigation = useCallback((roomIndex: number) => {
-        router.push(`/rooms/${roomIndex}`)
-    }, [])
-
-
 
 
     if (isLoading) {
