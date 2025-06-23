@@ -6,11 +6,13 @@ export const useInfiniteRooms = () => {
         queryKey: ['rooms'],
         queryFn: ({ pageParam = 0 }) => roomService.fetchRooms(pageParam as number),
         initialPageParam: 0,
-        refetchOnWindowFocus: false,
         getNextPageParam: (lastPage, allPages) => {
             if (lastPage?.length === 0) return undefined;
 
             return allPages?.length
-        }
+        },
+        staleTime: 10 * 60 * 1000, // 10 minutes - won't refetch for 10 mins
+        refetchOnWindowFocus: false, // Prevent refetch on tab focus
+        refetchOnMount: false,       // Don't refetch when component mounts
     })
 }
