@@ -23,7 +23,7 @@ const VariantCard = lazy(() => import('../_components/VariantCard'))
 
 function RoomPageSkeleton() {
     return (
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto px-4">
             {/* Header skeleton */}
             <div className="bg-white rounded-none sm:rounded-lg shadow-sm mb-2">
                 <div className="py-4 px-6">
@@ -183,7 +183,7 @@ export default function ({ params }: { params: Promise<Params> }) {
     }
 
     return (
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-4xl mx-auto">
             {/* Header */}
             <div className="bg-white rounded-none sm:rounded-lg shadow-sm mb-2">
                 <div className="py-4 px-6">

@@ -5,7 +5,7 @@ import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
 import OptimizedVideo from "@/app/shared/ui/media/OptimizedVideo";
 import { useEffect, useRef, useState } from "react"
 import { DisplayProperty, Variant } from "../schema/rooms.types";
-import { Bed, Bubbles, CheckCircle, Dumbbell, ForkKnife, Hotel, LocateIcon, LucideEdit, ParkingSquare, ReceiptText, SquarePercent, User, WavesLadder, Wifi } from "lucide-react";
+import { Bed, Bubbles, CheckCircle, Dumbbell, ForkKnife, Hotel, LocateIcon, LucideEdit, Menu, MenuSquare, ParkingSquare, ReceiptText, SquarePercent, User, WavesLadder, Wifi } from "lucide-react";
 
 
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -87,7 +87,7 @@ export default function VariantCard({
                 bg-white rounded-lg overflow-hidden h-full flex flex-col
                 transition-all duration-200 ease-in-out
                 ${isSelected
-                    ? 'shadow-xl border-2 border-green-500'
+                    ? 'shadow-xl border-2 border-brand-500'
                     : 'shadow-sm border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 hover:border-blue-500'
                 }
             `}
@@ -140,7 +140,7 @@ export default function VariantCard({
 
                 {/* Selected Badge */}
                 {isSelected && (
-                    <span className="absolute top-3 left-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-600 text-white z-20">
+                    <span className="absolute top-3 left-3 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-brand-600 text-white z-20">
                         <CheckCircle className="w-4 h-4 mr-1" />
                         Selected
                     </span>
@@ -159,7 +159,7 @@ export default function VariantCard({
                     {variant.display_properties.slice(0, 4).map((prop: DisplayProperty, index: number) => (
                         <div key={index} className="flex items-center py-1">
                             <div className="min-w-8 text-gray-600">
-                                {iconMap[prop.icon_name] || <LocateIcon fontSize="small" />}
+                                {iconMap[prop.icon_name] || <MenuSquare fontSize="small" />}
                             </div>
                             <span className="text-sm text-gray-600 ml-1">
                                 {prop.display_name}
@@ -192,7 +192,7 @@ export default function VariantCard({
                 {/* Cancellation Policy Link */}
                 <a
                     href="#"
-                    className="flex items-center text-green-600 mb-4 text-sm no-underline hover:underline"
+                    className="flex items-center text-brand-600 mb-4 text-sm no-underline hover:underline"
                 >
                     <ReceiptText className="w-4 h-4 mr-1" />
                     Cancellation policy
@@ -221,8 +221,8 @@ export default function VariantCard({
                             ${!variant.is_bookable
                                 ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
                                 : isSelected
-                                    ? 'bg-green-600 text-white hover:bg-green-700'
-                                    : 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white'
+                                    ? 'bg-brand-600 text-white hover:bg-brand-700'
+                                    : 'border-2 border-gray-300 text--600 hover:bg-gray-400 hover:text-white'
                             }
                         `}
                     >

@@ -83,6 +83,7 @@ export const DateRangeSelector = ({
                         onBlur={onBlur}
                         placeholder={startPlaceholder}
                         disabled={disabled}
+                        className="!bg-neutral-0"
                         min={actualMinDate}
                         max={endDate || maxDate}
                     />
@@ -95,6 +96,7 @@ export const DateRangeSelector = ({
                         onChange={handleEndDateChange}
                         onBlur={onBlur}
                         placeholder={startPlaceholder}
+                        className="!bg-neutral-0"
                         disabled={disabled}
                         min={actualMinDate}
                         max={endDate || maxDate}

@@ -25,6 +25,7 @@ export default function () {
             className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-0 "
         >
             <ControlledTextInput
+                className="!bg-neutral-0"
                 name="location"
                 control={control}
                 placeholder="Where To?"
@@ -33,6 +34,7 @@ export default function () {
 
 
             <ControlledTextInput
+                className="!bg-neutral-0"
                 name="guest_number"
                 control={control}
                 placeholder="Guests"
@@ -44,6 +46,7 @@ export default function () {
                 className="max-w-xs"
             >
                 <ControlledDateRangeSelector
+                    className=""
                     name="date_range"
                     control={control}
                     startPlaceholder="Check-in date"
