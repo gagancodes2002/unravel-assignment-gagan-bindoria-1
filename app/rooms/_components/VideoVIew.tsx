@@ -40,7 +40,7 @@ export default function VideoView({
             {/* Video Player */}
             <OptimizedVideo
                 src={media}
-                ref={videoPlayerRef}
+                videoPlayerRef={videoPlayerRef}
                 muted={isMuted}
                 loop
                 className="w-auto h-[150%] min-w-full object-cover "

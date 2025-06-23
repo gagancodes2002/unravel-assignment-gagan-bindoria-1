@@ -3,6 +3,8 @@ import { Room, RoomImage } from "../schema/rooms.types";
 import VideoView from "./VideoVIew";
 import ImageView from "./ImageView";
 import React from "react";
+import Link from "next/link";
+import OptimizedVideo from "@/app/shared/ui/media/OptimizedVideo";
 
 
 
@@ -21,7 +23,6 @@ export default function ({
 }: RoomMediaSectionProps) {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const videoPlayerRef = useRef<HTMLVideoElement>(null);
-    const { isMobile } = { isMobile: false }
 
     const mediaObj: {
         type: 'video' | 'image' | null
@@ -72,22 +73,23 @@ export default function ({
                 setIsPlaying(true);
             }
         }
-    }, [isPlaying]);
+    }, [isPlaying, videoPlayerRef]);
 
     const handleMouseEnter = useCallback(() => {
+        debugger;
         if (mediaObj?.type === 'video' && videoPlayerRef.current) {
             videoPlayerRef.current.play();
             setIsPlaying(true);
         }
-    }, [isMobile, mediaType]);
+    }, [mediaType]);
 
     const handleMouseLeave = useCallback(() => {
-        if (!isMobile && mediaType === 'video' && videoPlayerRef.current) {
+        if (mediaType === 'video' && videoPlayerRef.current) {
             videoPlayerRef.current.pause();
             videoPlayerRef.current.currentTime = 0;
             setIsPlaying(false);
         }
-    }, [isMobile, mediaType]);
+    }, [mediaType]);
 
     if (!media || media.length === 0) {
         return (
@@ -107,21 +109,21 @@ export default function ({
                 h-auto md:h-[32vh] max-h-none md:max-h-70 min-h-auto sm:min-h-[58vh] md:min-h-65
                 gap-0 md:gap-2 p-1 sm:p-1.5 md:p-2
                 transition-all duration-300 ease-in-out
-                hover:scale-[1.02] hover:shadow-xl hover:border hover:border-gray-400
+                hover:scale-[1.02] hover:shadow-sm hover:border hover:border-gray-400
             `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {/* Media Container */}
             <div className={`
-                relative overflow-hidden rounded bg-gray-200 aspect-square
+                overflow-hidden rounded bg-gray-200 aspect-square
                 w-full md:w-auto h-auto md:h-full max-w-[90vw] md:max-w-none
                 justify-self-center md:justify-self-start
             `}>
                 {mediaType === "video" ? (
                     <VideoView
-                        videoPlayerRef={videoPlayerRef}
                         media={media[0]}
+                        videoPlayerRef={videoPlayerRef}
                         isPlaying={isPlaying}
                         onPlayPause={handlePlayPause}
                     />
@@ -136,16 +138,15 @@ export default function ({
 
             {/* Content Container */}
             <div className={`
-                p-1.5 sm:p-2 md:p-0 flex flex-row justify-start gap-2 
+                grid grid-cols-6
+                p-1.5 sm:p-2 md:p-3.5  gap-2 
                 min-h-30 md:min-h-auto bg-transparent md:bg-white overflow-auto
             `}>
                 {/* Text Content */}
-                <div className="w-2/5 flex flex-col">
+                <div className="col-span-4 flex flex-col">
                     <h2 className={`
                         text-lg font-semibold mb-2
-                        overflow-hidden md:overflow-visible
-                        ${isMobile ? 'line-clamp-2' : 'block'}
-                    `}>
+                        overflow-hidden md:overflow-visible xs:line-clamp-2 sm:block `}>
                         {room.name}
                     </h2>
                     <div className="max-h-[30%] overflow-y-auto">
@@ -155,8 +156,24 @@ export default function ({
                     </div>
                 </div>
 
-                {/* Button Container */}
-                <div className="flex-1">
+                <div
+                    className="col-span-2 flex h-full items-end justify-end"
+                >
+
+                    {/* Button Container */}
+                    <Link
+                        href={`/rooms/${roomIndex}`}
+                        className="bg-brand-600 flex h-fit text-neutral-0 rounded-md py-1.5 px-2 text-sm hover:bg-brand-700 ring-1 transition-colors duration-300"
+
+                    >
+                        <span
+                            className="tracking-tight leading-none"
+                        >
+                            View Details
+                        </span>
+                    </Link>
+                </div>
+                {/* <div className="flex-1">
                     <a
                         href={`/rooms/${roomIndex}`}
                         className={`
@@ -168,7 +185,7 @@ export default function ({
                     >
                         View Details
                     </a>
-                </div>
+                </div> */}
             </div>
         </div>
     );

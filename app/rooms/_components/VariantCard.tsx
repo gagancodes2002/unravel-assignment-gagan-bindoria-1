@@ -102,7 +102,7 @@ export default function VariantCard({
                 {mediaType === "video" ? (
                     <OptimizedVideo
                         src={media}
-                        ref={videoPlayerRef}
+                        videoPlayerRef={videoPlayerRef}
                         muted={isMuted}
                         loop
                         className="w-auto h-[150%] min-w-full object-cover -translate-y-1/4"

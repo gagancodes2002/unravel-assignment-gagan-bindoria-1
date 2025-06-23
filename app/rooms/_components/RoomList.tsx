@@ -84,7 +84,7 @@ export default function (props: any) {
                     className="flex justify-center items-center py-8 min-h-20"
                 >
                     {isFetchingNextPage && (
-                        <div className="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-10 h-10 border-4 border-brand-600 border-t-transparent rounded-full animate-spin"></div>
                     )}
                     {!hasNextPage && loadedRooms.length > 0 && (
                         <p className="text-sm text-gray-500 italic">

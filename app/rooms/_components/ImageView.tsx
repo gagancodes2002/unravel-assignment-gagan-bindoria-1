@@ -45,7 +45,7 @@ export default function ImageView({
             {/* Main Large Image */}
             <div
                 className={`
-                    flex-[1_1_65%] relative rounded overflow-hidden bg-gray-300
+                    flex-[1_1_45%] relative rounded overflow-hidden bg-gray-300
                     transition-transform duration-200 ease-in-out
                     ${onImageClick ? 'cursor-pointer hover:scale-[1.01]' : 'cursor-default'}
                 `}

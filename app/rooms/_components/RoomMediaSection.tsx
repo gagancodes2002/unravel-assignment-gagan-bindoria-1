@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, forwardRef, useImperativeHandle, RefObject } from 'react'
 import OptimizedImage from '@/app/shared/ui/media/OptimizedImage'
 import OptimizedVideo from '@/app/shared/ui/media/OptimizedVideo'
 import React from 'react'
@@ -8,17 +8,21 @@ import { Room } from '../schema/rooms.types'
 import { Pause, Play, Volume, VolumeOff } from 'lucide-react'
 
 // Video component for single room page
-function RoomVideoView({
-    media,
-    videoPlayerRef,
-    isPlaying,
-    onPlayPause
-}: {
+
+interface RoomVideoViewProps {
     media: string;
-    videoPlayerRef: React.RefObject<HTMLVideoElement | null>;
     isPlaying: boolean;
     onPlayPause: () => void;
-}) {
+    videoPlayerRef: RefObject<HTMLVideoElement | null>
+}
+
+const RoomVideoView = ({
+    media,
+    isPlaying,
+    onPlayPause,
+    videoPlayerRef
+}: RoomVideoViewProps) => {
+
     const [isMuted, setIsMuted] = useState(true);
 
     const handleMuteToggle = useCallback(() => {
@@ -38,7 +42,7 @@ function RoomVideoView({
         >
             <OptimizedVideo
                 src={media}
-                ref={videoPlayerRef}
+                videoPlayerRef={videoPlayerRef}
                 muted={isMuted}
                 loop
                 className="w-full h-full object-cover object-center"
@@ -74,7 +78,7 @@ function RoomVideoView({
                 {isMuted ? <VolumeOff /> : <Volume />}
             </button>
         </div>
-    );
+    )
 }
 
 // Image gallery component for single room page
@@ -180,9 +184,6 @@ export default function RoomMediaSection({
 }) {
     const [isPlaying, setIsPlaying] = useState<boolean>(false);
     const videoPlayerRef = useRef<HTMLVideoElement | null>(null);
-
-    const { isMobile } = { isMobile: false }
-
     const handlePlayPause = useCallback(() => {
         if (videoPlayerRef.current) {
             if (isPlaying) {
@@ -197,19 +198,19 @@ export default function RoomMediaSection({
 
     // Auto-play on hover for desktop
     const handleMouseEnter = useCallback(() => {
-        if (!isMobile && mediaType === 'video' && videoPlayerRef.current) {
+        if (mediaType === 'video' && videoPlayerRef.current) {
             videoPlayerRef.current.play();
             setIsPlaying(true);
         }
-    }, [isMobile, mediaType]);
+    }, [mediaType]);
 
     const handleMouseLeave = useCallback(() => {
-        if (!isMobile && mediaType === 'video' && videoPlayerRef.current) {
+        if (mediaType === 'video' && videoPlayerRef.current) {
             videoPlayerRef.current.pause();
             videoPlayerRef.current.currentTime = 0;
             setIsPlaying(false);
         }
-    }, [isMobile, mediaType]);
+    }, [mediaType]);
 
     if (!media || media.length === 0) {
         return (
