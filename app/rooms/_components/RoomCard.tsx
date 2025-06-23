@@ -109,30 +109,25 @@ export default function RoomMediaSection({
     return (
         <div
             className={`
-                z-0 w-full max-w-full sm:max-w-[60vw] bg-white shadow-lg rounded-lg
-                grid grid-cols-1 md:grid-cols-[auto_1fr] grid-rows-[auto_auto] md:grid-rows-1
-                h-auto md:h-[32vh] max-h-none md:max-h-70 min-h-auto sm:min-h-[58vh] md:min-h-65
-                gap-0 md:gap-3 p-1 sm:p-1.5 md:p-2
-                transition-all duration-300 ease-in-out
-                hover:scale-[1.01] hover:shadow-xl border border-gray-200 hover:border-gray-300
-            `}
+             z-0 max-w-full grid justify-center items-center
+             grid-cols-1 md:grid-cols-[auto_1fr]
+             grid-rows-[auto_auto] md:grid-rows-1
+             h-auto md:h-[32vh] md:max-h-70 sm:min-h-[58vh] md:min-h-65
+             gap-0 md:gap-3
+             p-1 sm:p-1.5 md:p-2
+             bg-white border border-gray-200 rounded-lg shadow-lg
+             transition-all duration-300 ease-in-out
+             hover:scale-[1.01] hover:shadow-xl hover:border-gray-300
+        `}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
             {/* Media Container */}
             <div className={`
-                rounded-lg bg-gray-200 aspect-square relative
-                w-full md:w-auto h-auto md:h-full max-w-[90vw] md:max-w-none
-                justify-center overflow-hidden
+                rounded-lg bg-white aspect-square relative
+                w-full md:w-auto h-auto md:h-full md:max-w-none
+                justify-center overflow-hidden p-2
             `}>
-
-
-                {/* Image Count Badge */}
-                {mediaType === "image" && media.length > 1 && (
-                    <div className="absolute bottom-3 right-3 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium">
-                        {media.length} photos
-                    </div>
-                )}
 
                 {mediaType === "video" ? (
                     <VideoView
@@ -211,10 +206,10 @@ export default function RoomMediaSection({
                 {/* Price setion */}
                 <div className="flex items-end justify-between">
                     <div className="flex flex-col">
-                        <div className="flex items-baseline gap-1">
+                        <div className="flex flex-col sm:flex-row items-baseline gap-1">
                             <span className="text-xl font-bold text-gray-900">
                                 <span
-                                    className="text-green-600"
+                                    className="text-green-600 flex flex-row"
                                 >
                                     {roomDetails.currency}  {roomDetails.price.toLocaleString()}
                                 </span>
@@ -226,7 +221,7 @@ export default function RoomMediaSection({
 
                     <Link
                         href={`/rooms/${roomIndex}`}
-                        className="bg-brand-600 text-white rounded-lg py-2.5 px-4 text-sm font-medium hover:bg-brand-700 transition-colors duration-200 shadow-sm hover:shadow-md"
+                        className="bg-brand-600 inline flex-nowrap text-nowrap text-white rounded-lg py-2.5 px-4 text-sm font-medium hover:bg-brand-700 transition-colors duration-200 shadow-sm hover:shadow-md"
                     >
                         Book Now
                     </Link>

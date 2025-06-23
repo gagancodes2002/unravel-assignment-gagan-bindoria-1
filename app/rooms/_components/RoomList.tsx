@@ -51,13 +51,17 @@ export default function (props: any) {
 
     return (
         <div
-            className="text-neutral-600 flex flex-col justify-center items-center space-y-12"
+            className="px-6 text-neutral-600 md:max-w-7xl mx-auto  flex flex-col justify-center items-center space-y-12"
         >
 
-            <TopInput />
+            <div
+                className="w-full"
+            >
+                <TopInput />
+            </div>
 
             {/* Rooms Grid */}
-            <div className="md:col-span-3 ">
+            <div className="md:col-span-3 w-full">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-4 sm:gap-6">
                     {loadedRooms.map((room: Room, roomIndex: number) => (
                         <div

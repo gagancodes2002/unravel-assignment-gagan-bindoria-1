@@ -22,31 +22,40 @@ export default function () {
 
     return (
         <div
-            className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 gap-0 "
+            className="w-full grid grid-cols-3 gap-2 "
         >
-            <ControlledTextInput
-                className="!bg-neutral-0"
-                name="location"
-                control={control}
-                placeholder="Where To?"
-                icon={<MapPin size={20} />}
-            />
-
-
-            <ControlledTextInput
-                className="!bg-neutral-0"
-                name="guest_number"
-                control={control}
-                placeholder="Guests"
-                icon={<Users size={20} />}
-                type="number"
-            />
 
             <div
-                className="max-w-xs"
+                className="col-span-3 md:col-span-1"
+            >
+                <ControlledTextInput
+                    className="!bg-neutral-0 w-full"
+                    name="location"
+                    control={control}
+                    placeholder="Where To?"
+                    icon={<MapPin size={20} />}
+                />
+            </div>
+
+
+            <div
+                className="col-span-3 md:col-span-1"
+            >
+                <ControlledTextInput
+                    className="!bg-neutral-0 w-full"
+                    name="guest_number"
+                    control={control}
+                    placeholder="Guests"
+                    icon={<Users size={20} />}
+                    type="number"
+                />
+            </div>
+
+            <div
+                className="col-span-3 md:col-span-1 w-full"
             >
                 <ControlledDateRangeSelector
-                    className=""
+                    className="w-fit"
                     name="date_range"
                     control={control}
                     startPlaceholder="Check-in date"

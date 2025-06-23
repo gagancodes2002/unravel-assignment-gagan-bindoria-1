@@ -15,12 +15,15 @@ interface DateInputProps extends TextInputProps {
 
 const DateInput = ({ min, max, ...props }: DateInputProps) => (
 
+
+
     <TextInput
         {...props}
         type="date"
         min={min}
         max={max}
     />
+
 )
 
 interface DateRangeSelectorProps {
@@ -73,35 +76,33 @@ export const DateRangeSelector = ({
             className="w-full"
         >
             <div
-                className={clsx("grid grid-cols-2 gap-3", className)}
+                className={clsx("flex flex-row justify-between w-full gap-2", className)}
             >
                 {/* Start Date Input */}
-                <div>
-                    <DateInput
-                        value={startDate}
-                        onChange={handleStartDateChange}
-                        onBlur={onBlur}
-                        placeholder={startPlaceholder}
-                        disabled={disabled}
-                        className="!bg-neutral-0"
-                        min={actualMinDate}
-                        max={endDate || maxDate}
-                    />
-                </div>
 
+                <DateInput
+                    value={startDate}
+                    onChange={handleStartDateChange}
+                    onBlur={onBlur}
+                    placeholder={startPlaceholder}
+                    disabled={disabled}
+                    className="!bg-neutral-0 justify-self-start w-full"
+                    min={actualMinDate}
+                    max={endDate || maxDate}
+
+                />
                 {/* End Date Input */}
-                <div>
-                    <DateInput
-                        value={endDate}
-                        onChange={handleEndDateChange}
-                        onBlur={onBlur}
-                        placeholder={startPlaceholder}
-                        className="!bg-neutral-0"
-                        disabled={disabled}
-                        min={actualMinDate}
-                        max={endDate || maxDate}
-                    />
-                </div>
+
+                <DateInput
+                    value={endDate}
+                    onChange={handleEndDateChange}
+                    onBlur={onBlur}
+                    placeholder={startPlaceholder}
+                    className="!bg-neutral-0 justify-self-end w-full"
+                    disabled={disabled}
+                    min={actualMinDate}
+                    max={endDate || maxDate}
+                />
             </div>
 
             {/* Show count if both selected */}
@@ -112,19 +113,9 @@ export const DateRangeSelector = ({
                     {calculateDiff(startDate, endDate)}
                 </div>
             )} */}
-        </div>
+        </div >
     )
 
-}
-
-// Calculate diff count 
-const calculateDiff = (startDate: string, endDate: string): number => {
-    const start = new Date(startDate);
-    const end = new Date(endDate)
-    const diffTime = end.getTime() - start.getTime();
-    const divideTimeBy = 1000 * 60 * 60 * 24
-    const diffDays = Math.ceil(diffTime / divideTimeBy)
-    return Math.max(0, diffDays);
 }
 
 // Controlled version 
