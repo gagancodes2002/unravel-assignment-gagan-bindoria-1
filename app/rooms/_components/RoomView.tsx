@@ -25,7 +25,7 @@ function RoomPageSkeleton() {
     return (
         <div className="max-w-4xl mx-auto px-4">
             {/* Header skeleton */}
-            <div className="bg-white rounded-none sm:rounded-lg shadow-sm mb-2">
+            <div className="bg-white rounded-none sm:rounded-md shadow-sm mb-2">
                 <div className="py-4 px-6">
                     <div className="flex items-center justify-between">
                         <div className="h-10 bg-gray-200 rounded w-35 animate-pulse"></div>
@@ -37,11 +37,11 @@ function RoomPageSkeleton() {
             <div className="py-4 sm:py-8">
                 {/* Media skeleton */}
                 <div className="mb-8">
-                    <div className="h-96 bg-gray-200 rounded-lg animate-pulse"></div>
+                    <div className="h-96 bg-gray-200 rounded-md animate-pulse"></div>
                 </div>
 
                 {/* Room info skeleton */}
-                <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6 mb-8">
+                <div className="bg-white shadow-sm rounded-md p-4 sm:p-6 mb-8">
                     <div className="mb-6">
                         <div className="h-12 bg-gray-200 rounded w-3/5 mb-4 animate-pulse"></div>
 
@@ -51,7 +51,7 @@ function RoomPageSkeleton() {
                             <div className="h-6 bg-gray-200 rounded w-45 animate-pulse"></div>
                         </div>
 
-                        <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <div className="bg-gray-50 p-6 rounded-md border border-gray-200">
                             <div className="h-8 bg-gray-200 rounded w-38 mb-4 animate-pulse"></div>
                             {Array.from({ length: 4 }).map((_, index) => (
                                 <div key={index} className="flex items-center mb-2">
@@ -64,7 +64,7 @@ function RoomPageSkeleton() {
                 </div>
 
                 {/* Variants skeleton */}
-                <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6">
+                <div className="bg-white shadow-sm rounded-md p-4 sm:p-6">
                     <div className="flex items-center justify-between mb-6">
                         <div className="h-10 bg-gray-200 rounded w-2/5 animate-pulse"></div>
                         <div className="h-8 bg-gray-200 rounded w-30 animate-pulse"></div>
@@ -72,7 +72,7 @@ function RoomPageSkeleton() {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
                         {Array.from({ length: 3 }).map((_, index) => (
-                            <div key={index} className="h-88 bg-gray-200 rounded-lg animate-pulse"></div>
+                            <div key={index} className="h-88 bg-gray-200 rounded-md animate-pulse"></div>
                         ))}
                     </div>
                 </div>
@@ -134,8 +134,8 @@ export default function ({ params }: { params: Promise<Params> }) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="max-w-md mx-auto">
-                    <div className="bg-white shadow-lg rounded-lg p-8 text-center">
-                        <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+                    <div className="bg-white shadow-lg rounded-md p-8 text-center">
+                        <div className="bg-red-50 border border-red-200 rounded-md p-4 mb-6">
                             <h2 className="text-lg font-semibold text-red-800 mb-2">
                                 Error Loading Room
                             </h2>
@@ -160,8 +160,8 @@ export default function ({ params }: { params: Promise<Params> }) {
         return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
                 <div className="max-w-md mx-auto">
-                    <div className="bg-white shadow-lg rounded-lg p-8 text-center">
-                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                    <div className="bg-white shadow-lg rounded-md p-8 text-center">
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-6">
                             <h2 className="text-lg font-semibold text-yellow-800 mb-2">
                                 Room Not Found
                             </h2>
@@ -183,9 +183,9 @@ export default function ({ params }: { params: Promise<Params> }) {
     }
 
     return (
-        <div className="max-w-md mx-auto sm:max-w-4xl">
+        <div className="max-w-md mx-auto sm:max-w-4xl px-6">
             {/* Header */}
-            <div className="bg-white rounded-none sm:rounded-lg shadow-sm mb-2">
+            <div className="bg-white rounded-md shadow-sm mb-2">
                 <div className="py-4 px-6">
                     <div className="flex items-center justify-between">
                         <nav aria-label="breadcrumb">
@@ -216,7 +216,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                 </div>
 
                 {/* Room Details */}
-                <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6 mb-8">
+                <div className="bg-white shadow-sm rounded-md p-4 sm:p-6 mb-8">
                     <div className="mb-6">
                         <h1 className="text-2xl sm:text-4xl font-medium text-gray-900 mb-6">
                             {room.name}
@@ -244,7 +244,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                         </div>
 
                         {/* Room Features */}
-                        <div className="bg-blue-50 border border-blue-100 rounded-lg p-6">
+                        <div className="bg-blue-50 border border-blue-100 rounded-md p-6">
                             <div className="flex items-center mb-4">
                                 <CheckCircle className="w-5 h-5 mr-3 text-blue-600" />
                                 <h3 className="text-lg font-semibold text-gray-900">
@@ -282,7 +282,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                 </div>
 
                 {/* Room Variants */}
-                <div className="bg-white shadow-sm rounded-lg p-4 sm:p-6">
+                <div className="bg-white shadow-sm rounded-md p-4 sm:p-6">
                     <div className="flex items-center justify-between mb-6">
                         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                             Choose Your Rate
@@ -312,7 +312,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                         </div>
                     ) : (
                         <div className="text-center py-16">
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 max-w-md mx-auto">
+                            <div className="bg-blue-50 border border-blue-200 rounded-md p-6 max-w-md mx-auto">
                                 <p className="text-base text-blue-800">
                                     No variants available for this room.
                                 </p>
@@ -323,7 +323,7 @@ export default function ({ params }: { params: Promise<Params> }) {
                     {selectedVariant && (
                         <div className="mt-8 flex justify-center">
                             <button className={`
-                                bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg
+                                bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md
                                 px-8 py-3 text-lg transition-colors xs:w-full sm:min-w-auto`}>
                                 Continue with Selected Room
                             </button>
