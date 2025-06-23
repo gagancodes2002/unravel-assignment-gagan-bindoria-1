@@ -46,7 +46,7 @@ export default function ({ src,
     return (
         <div
             ref={containerRef}
-            className={`relative overflow-hidden rounded bg-red-100 ${className}`}
+            className={` rounded bg-red-100 ${className}`}
         >
             {!isInView ? (
                 <Skeleton

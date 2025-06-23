@@ -76,7 +76,6 @@ export default function ({
     }, [isPlaying, videoPlayerRef]);
 
     const handleMouseEnter = useCallback(() => {
-        debugger;
         if (mediaObj?.type === 'video' && videoPlayerRef.current) {
             videoPlayerRef.current.play();
             setIsPlaying(true);
@@ -104,7 +103,7 @@ export default function ({
     return (
         <div
             className={`
-                w-full max-w-full sm:max-w-[60vw] bg-white shadow-lg rounded-lg overflow-hidden
+                z-0 w-full max-w-full sm:max-w-[60vw] bg-white shadow-lg rounded-lg
                 grid grid-cols-1 md:grid-cols-[auto_1fr] grid-rows-[auto_auto] md:grid-rows-1
                 h-auto md:h-[32vh] max-h-none md:max-h-70 min-h-auto sm:min-h-[58vh] md:min-h-65
                 gap-0 md:gap-2 p-1 sm:p-1.5 md:p-2
@@ -116,9 +115,9 @@ export default function ({
         >
             {/* Media Container */}
             <div className={`
-                overflow-hidden rounded bg-gray-200 aspect-square
+                rounded bg-gray-200 aspect-square
                 w-full md:w-auto h-auto md:h-full max-w-[90vw] md:max-w-none
-                justify-self-center md:justify-self-start
+                justify-center
             `}>
                 {mediaType === "video" ? (
                     <VideoView
@@ -128,7 +127,7 @@ export default function ({
                         onPlayPause={handlePlayPause}
                     />
                 ) : mediaType === "image" ? (
-                    <ImageView media={media} onImageClick={onImageClick} />
+                    <ImageView key={roomIndex} roomIndex={roomIndex} media={media} onImageClick={onImageClick} />
                 ) : (
                     <div className="flex items-center justify-center h-full text-gray-600">
                         <p className="text-base">Unsupported media type</p>
@@ -173,19 +172,6 @@ export default function ({
                         </span>
                     </Link>
                 </div>
-                {/* <div className="flex-1">
-                    <a
-                        href={`/rooms/${roomIndex}`}
-                        className={`
-                            inline-block px-4 py-2 bg-blue-600 text-white rounded
-                            hover:bg-blue-700 transition-colors duration-200
-                            text-sm font-medium no-underline
-                            self-start
-                        `}
-                    >
-                        View Details
-                    </a>
-                </div> */}
             </div>
         </div>
     );

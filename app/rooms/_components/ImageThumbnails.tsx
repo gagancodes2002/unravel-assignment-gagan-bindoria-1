@@ -1,5 +1,7 @@
 import OptimizedImage from "@/app/shared/ui/media/OptimizedImage";
+import { PopoverButton } from "@headlessui/react";
 import React from "react";
+import { Tooltip } from "react-tooltip";
 
 interface ImageThumbnailsProps {
     mediaList: string[];
@@ -8,9 +10,11 @@ interface ImageThumbnailsProps {
     onMouseEnter: (index: number) => void;
     onMouseLeave: () => void;
     className?: string;
+    roomIndex: number
 }
 
 export default function ImageThumbnails({
+    roomIndex,
     mediaList,
     hasMoreImages,
     remainingCount,
@@ -19,9 +23,11 @@ export default function ImageThumbnails({
     className = ''
 }: ImageThumbnailsProps) {
     return (
-        <div className={`flex-1 grid grid-cols-4 gap-1 min-h-0 items-stretch ${className}`}>
+        <div
+
+            className={`flex-1 grid grid-cols-4 gap-2 min-h-0 ${className}`}>
             {Array.from({ length: 4 }).map((_, index) => {
-                const imageIndex = index + 1;
+                const imageIndex = index;
                 const imageUrl = mediaList[imageIndex];
                 const isLastThumbnail = index === 3;
                 const showViewAll = isLastThumbnail && hasMoreImages;
@@ -29,23 +35,26 @@ export default function ImageThumbnails({
                 return (
                     <div
                         key={index}
-                        className="relative aspect-square rounded overflow-hidden cursor-pointer bg-gray-300 transition-transform duration-200 hover:scale-[1.03] hover:cursor-zoom-in"
+                        data-tooltip-id={`minor-image-${roomIndex}-${index + 1}`}
+                        data-tooltip-place="top"
+                        className="!aspect-square relative w-full rounded overflow-hidden cursor-pointer bg-gray-300 transition-transform duration-200 hover:scale-[1.03] hover:cursor-zoom-in"
                         onMouseEnter={(e) => {
                             e.stopPropagation();
-                            onMouseEnter(index + 1);
+                            onMouseEnter(index);
                         }}
                         onMouseLeave={(e) => {
                             e.stopPropagation();
                             onMouseLeave();
                         }}
                     >
+
                         {imageUrl && (
                             <OptimizedImage
                                 src={imageUrl}
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 25vw, 15vw"
-                                alt={`Property image ${imageIndex + 1}`}
+                                alt={`Property image ${roomIndex}-${imageIndex}`}
                             />
                         )}
 

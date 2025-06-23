@@ -29,7 +29,7 @@ export default function VideoView({
     return (
         <div
             className={`
-                relative h-full w-full overflow-hidden rounded bg-gray-900 cursor-pointer group
+                relative h-full w-full z-[0] overflow-hidden rounded bg-gray-900 cursor-pointer group
                 ${className}
             `}
             onClick={(e) => {
@@ -43,7 +43,7 @@ export default function VideoView({
                 videoPlayerRef={videoPlayerRef}
                 muted={isMuted}
                 loop
-                className="w-auto h-[150%] min-w-full object-cover "
+                className="w-auto min-w-full object-cover z-[0] "
                 height="100%"
                 width="100%"
             />
