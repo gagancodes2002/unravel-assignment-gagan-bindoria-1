@@ -25,7 +25,7 @@ export default function ImageThumbnails({
     return (
         <div
 
-            className={`flex-1 grid grid-cols-4 gap-2 min-h-0 ${className}`}>
+            className={`flex-1 grid grid-cols-4 gap-2 min-h-0 items-center ${className}`}>
             {Array.from({ length: 4 }).map((_, index) => {
                 const imageIndex = index;
                 const imageUrl = mediaList[imageIndex];

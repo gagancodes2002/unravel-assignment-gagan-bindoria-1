@@ -29,7 +29,7 @@ export default function ImageView({
     const handlePopoff = () => setCurrentIndex(null);
 
     return (
-        <div className={`h-full w-full flex flex-col justify-between gap-2 p-2 ${className}`}>
+        <div className={`h-full w-full flex flex-col justify-evenly gap-2 p-2 ${className}`}>
             {
                 mediaList?.map((media, i) =>
                 (
